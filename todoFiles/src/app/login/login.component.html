@@ -1,0 +1,12 @@
+<div style="width:45%;">
+    <div class="container">
+        <h1>Login</h1>
+        <br>
+        <div class="alert alert-warning" *ngIf="isBlank"> {{errMsg}}</div>
+        Username: <input type="text" name="usename" [(ngModel)]="username" placeholder="username" />
+        <br><br>
+        Password: <input type="password" name="password" [(ngModel)]="password" placeholder="password" />
+        <br><br>
+        <button style="float:right;" (click)=handleLogin()>Login</button>
+    </div>
+</div>

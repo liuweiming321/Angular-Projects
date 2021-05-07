@@ -1,0 +1,49 @@
+<h1>Todo List</h1>
+<div class="alert alert-success" *ngIf="message"> {{message}}</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>description</th>
+                <th>finsihed?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td>{{todo.description}}</td>
+                <td>{{todo.complete}}</td>
+                <td><button>Complete</button></td>
+                <td><button (click)="deleteTodo(todo.id)">Remove</button></td>
+                <td><button (click)="editTodo(todo)">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="addTodo()">Add One</button>
+</div>
+<div class="modal" *ngIf="editModal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="close" (click)="closeEdit()">&times;</div>
+        <h4>Editing Todo</h4>
+        <p>Working on editing the todo. id: {{thisId}}</p>
+        <div class="alert alert-warning" *ngIf="errMessage"> {{errMessage}}</div>
+        <label>Description:
+            <input type="text" [(ngModel)]="thisDescription" />
+        </label>
+        <button style="width:15%;position:relative;left:80%;" (click)="updateTodo()">save</button>
+    </div>
+</div>
+<div class="modal" *ngIf="addModal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="close" (click)="closeAdd()">&times;</div>
+        <h4>Add a Todo</h4>
+        <p>Please add a description and click "add" when you are finished</p>
+        <div class="alert alert-warning" *ngIf="errMessage"> {{errMessage}}</div>
+        <label>Description:
+            <input type="text" [(ngModel)]="newDescription" placeholder="ex. Learn to drive" />
+        </label>
+        <button style="width:15%;position:relative;left:80%;" (click)="addNewTodo()">add</button>
+    </div>
+</div>

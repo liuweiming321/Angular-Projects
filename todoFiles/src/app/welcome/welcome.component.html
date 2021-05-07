@@ -1,0 +1,20 @@
+<h1>Welcome</h1>
+<br>
+<div class="container">
+    <p>Welcome {{user}}!</p>
+    <p>here are the apps you can do:</p>
+    <button (click)="gotoTodo()">todo</button>
+    <br><br>
+</div>
+<div class="container">
+    <p>Click here for customized welcome message</p>
+    <button (click)="getWelcomeWParaMessage()">Get Welcome Message</button>
+</div>
+<div class="container" *ngIf="customizeMessage">
+    <h4>Customized welcome message</h4>
+    <p>{{customizeMessage}}</p>
+</div>
+<div class="container" style="color:RED" *ngIf="errorMessage">
+    <h6>Oops! Something went wrong</h6>
+    <p>{{errorMessage}}</p>
+</div>
